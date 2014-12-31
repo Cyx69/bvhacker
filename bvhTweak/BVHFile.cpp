@@ -736,11 +736,13 @@ bool CBVHFile::ReadLine(CStdioFile* pFile, CString* line)
 		if(!success) return false;
 		*line->TrimRight();
 		*line->TrimLeft();
+#if 0 // Some BVH files have very long motion lines (like from Perception Neuron)
 		if(line->GetLength()>2048)
 		{
 			AfxMessageBox(_T("Problem with file: was the file saved using Mac line endings?"),MB_ICONSTOP);
 			return false;
 		}
+#endif
 	//}
 	return true;
 }
